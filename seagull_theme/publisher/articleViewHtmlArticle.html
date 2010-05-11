@@ -1,0 +1,6 @@
+<!--this is the article detail view-->
+
+<h1 class="pageTitle">{leadArticle[title]}</h1>
+<div class="datePublished"><em>{formatDatePretty(leadArticle[startDate])}, {translate(#contributed by#)}: <a href="{makeUrl(#view#,#profile#,#user#,##,#frmUserID|leadArticle[createdByID]#)}">{leadArticle[creatorName]}</a></em></div>
+{leadArticle[bodyHtml]:h}
+<p><a href="{makeUrl(#summary#,##,##)}">[back to list]</a></p>

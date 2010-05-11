@@ -1,0 +1,26 @@
+<div class="message">{msgGet()}</div>
+
+{if:staticArticle}
+    <div id="staticArticle">
+        {if:leadArticle}
+            {t:articleOutput}
+        {else:}
+            <p flexy:if="leadArticle[title]">{translate(#No lead article found#)}</p>
+        {end:}
+    </div>
+{else:}
+
+    <div id="leadArticle">
+        {if:leadArticle}
+            {t:articleOutput}
+        {else:}
+            <p flexy:if="leadArticle[title]">{translate(#No lead article found#)}</p>
+        {end:}
+    </div>
+
+    <!-- ARE COMMENTS ENABLED -->
+    {if:conf[ArticleViewMgr][commentsEnabled]}
+        <flexy:include src="comments.html" />
+    {end:}
+{end:}
+

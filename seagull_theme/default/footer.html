@@ -1,0 +1,25 @@
+<!--start footer-->
+<div id="footer">
+    {translate(#Powered by#)} <a href="http://seagullproject.org" title="{translate(#Seagull PHP Framework#)}">{translate(#Seagull PHP Framework#)}</a> v{versionAPI}
+    | <a href="http://seagullproject.org/credits/">Credits</a>
+    | <a href="http://seagullproject.org/contact/">Contact</a>
+    <p flexy:if="showExecutionTimes">
+    {translate(#Execution Time#)} = {getExecutionTime()} {translate(#ms#)}
+    {getQueryCount()} {translate(#queries#)}
+    </p>
+    <p flexy:if="conf[debug][profiling]">{getMemoryUsage()} kb {translate(#allocated#)}</p>
+</div><!--end footer-->
+
+</div><!--end airlock-->
+
+<script type='text/javascript' src='http://track3.mybloglog.com/js/jsserv.php?mblID=2007030109281598'></script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-435749-1";
+urchinTracker();
+</script>
+
+</body>
+</html>
