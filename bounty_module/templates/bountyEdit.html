@@ -1,0 +1,73 @@
+<h1 class="pageTitle">{translate(pageTitle)}</h1>
+<span flexy:if="msgGet()">{msgGet()}</span>
+
+<form method="post" flexy:ignore>
+<input type="hidden" name="action" value="{action}" />
+<input type="hidden" name="frmBountyID" value="{bounty.bounty_id}" />
+
+<table class="wide">
+    <tr>
+        <td align="center">
+            <table>
+                <!--NAME-->
+                <tr>
+                    <td class="fieldName">{translate(#name#,#ucfirst#)}</td>
+                    <td class="fieldValue"><input type="text" name="bounty[name]" size="45" value="{bounty.name}" /></td>
+                </tr>
+
+                <!--SPONSOR-->
+                <tr>
+                    <td class="fieldName">{translate(#sponsor#,#ucfirst#)}</td>
+                    <td class="fieldValue"><input type="text" name="bounty[sponsor]" size="45" value="{bounty.sponsor}" /></td>
+                </tr>
+
+                <!--WINNER-->
+                <tr>
+                    <td class="fieldName">{translate(#winner#,#ucfirst#)}</td>
+                    <td class="fieldValue"><input type="text" name="bounty[winner]" size="45" value="{bounty.winner}" /></td>
+                </tr>
+
+                <!--STATUS-->
+                <tr>
+                    <td class="fieldName">{translate(#status#,#ucfirst#)}</td>
+                    <td class="fieldValue">
+                        <select name="bounty[status_id]" id="bountyStatus">
+                            {generateSelect(aStatuses,bounty.status_id):h}
+                        </select>
+                    </td>
+                </tr>
+
+                <!--VALUE-->
+                <tr>
+                    <td class="fieldName">{translate(#value#,#ucfirst#)}</td>
+                    <td><input type="text" name="bounty[value]" value="{bounty.value}" /></td>
+                </tr>
+
+
+                <!--COMPLETION DATE-->
+                <tr>
+                    <td class="fieldName">{translate(#completion date#,#ucfirst#)}</td>
+                    <td><input type="text" name="bounty[target_completion_date]" value="{bounty.target_completion_date}" /></td>
+                </tr>
+
+                <!--DESCRIPTION-->
+                <tr>
+                    <td class="fieldName">Description</td>
+                    <td class="fieldValue">
+                        <textarea name="bounty[description]" rows="10" cols="50" >{bounty.description}</textarea>
+                    </td>
+                </tr>
+
+                <!--SUBMIT-->
+                <tr>
+                    <td colspan="2" align="center">
+                        <input class="wideButton" type="submit" name="submitted" value="{translate(#Save#)}" />&nbsp;
+                        <input class="wideButton" type="button" name="cancel" value="{translate(#Cancel#)}"
+                            onClick="document.location.href='{makeUrl(#list#,#adminbounty#,#bounty#):h}'" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</form>

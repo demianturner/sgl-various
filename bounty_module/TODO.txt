@@ -1,0 +1,11 @@
+data
+===========
+ - add perms to data.default.my.sql
+
+public view
+===========
+ - list of available bounties, including jobs (as a block)
+ - block showing high priority bounties
+
+admin view
+==========

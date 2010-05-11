@@ -1,0 +1,37 @@
+<h1 class="pageTitle">Seagull Bounties</h1>
+<div class="message">{msgGet()}</div>
+
+<div class="bounty" id="bounty{bounty.bounty_id}">
+    <div class="sponsoring">
+        <!-- VALUE -->
+        {if:isEqual(bounty._status_id.name,#open#)}
+            {if:!isEqual(bounty.value,#0#)}
+            <p><span class="estimatedValue">$ {bounty.value}</span><br />(Estimation)</p>
+            {end:}
+        {else:}
+            <p><span class="value">$ {bounty.value}</span></p>
+        {end:}
+
+        <!-- SPONSOR -->
+        {if:isEqual(bounty._status_id.name,#open#)}
+            <p class="sponsorMe">
+                <a href="mailto:demian@seagullproject.org?Subject=Sponsor offer for bounty #{bounty.bounty_id} : {bounty.name}&amp;body=Tell us how much you want to sponsor this task">Sponsor me</a>
+            </p>
+        {else:}
+            <p>Sponsored by<br /><span class="sponsor">{bounty.sponsor}</span></p>
+        {end:}
+
+    </div>
+    <h3>{bounty.name}</h3>
+    <!-- DUE DATE -->
+    {if:!isEqual(bounty._status_id.name,#open#)}
+    <p><em>Due date:</em> <span class="dueDate">{bounty.target_completion_date}</span></p>
+    {end:}
+    <!-- AWARDEE -->
+    {if:isEqual(bounty._status_id.name,#sponsored_and_assigned#)}
+    <p><em>Awardee:</em> <span class="rewardee">{bounty.winner}</span></p>
+    {end:}
+    <p class="description">{GLOBALS.nl2br(bounty.description):h}</p>
+    <br class="spacer" />
+    <a href="javascript:history.go(-1)"> back</a>
+</div>

@@ -1,0 +1,40 @@
+<h1 class="pageTitle">Seagull Bounties</h1>
+<div class="message">{msgGet()}</div>
+<div class="bountyList" flexy:ignore>
+    {foreach:results,bountyType,aBounties}
+    <h2>{bountyType}</h2>
+    <div class="bounty" id="bounty{oBounty.bounty_id}" flexy:foreach="aBounties,key,oBounty">
+        <div class="sponsoring">
+            <!-- VALUE -->
+            {if:isEqual(oBounty._status_id.name,#open#)}
+                {if:!isEqual(oBounty.value,#0#)}
+                <p><span class="estimatedValue">$ {oBounty.value}</span><br />(Estimation)</p>
+                {end:}
+            {else:}
+                <p><span class="value">$ {oBounty.value}</span></p>
+            {end:}
+
+            <!-- SPONSOR -->
+            {if:isEqual(oBounty._status_id.name,#open#)}
+                <p class="sponsorMe">
+                    <a href="mailto:demian@seagullproject.org?Subject=Sponsor offer for bounty #{oBounty.bounty_id} : {oBounty.name}&amp;body=Tell us how much you want to sponsor this task">Sponsor me</a>
+                </p>
+            {else:}
+                <p>Sponsored by<br /><span class="sponsor">{oBounty.sponsor}</span></p>
+            {end:}
+
+        </div>
+        <h3>{oBounty.name}</h3>
+        <!-- DUE DATE -->
+        {if:!isEqual(oBounty._status_id.name,#open#)}
+        <p><em>Due date:</em> <span class="dueDate">{oBounty.target_completion_date}</span></p>
+        {end:}
+        <!-- AWARDEE -->
+        {if:isEqual(oBounty._status_id.name,#sponsored_and_assigned#)}
+        <p><em>Awardee:</em> <span class="rewardee">{oBounty.winner}</span></p>
+        {end:}
+        <p class="description">{GLOBALS.nl2br(oBounty.description):h}</p>
+        <br class="spacer" />
+    </div>
+    {end:}
+</div>
